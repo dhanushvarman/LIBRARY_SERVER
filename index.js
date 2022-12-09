@@ -70,7 +70,7 @@ app.get("/user/:userId", async (req, res) => {
         const db = connection.db("User")
 
         //Select collection & DO operation(CRUD)
-        const user = await db.collection("admin").findOne({ _id: mongodb.ObjectId(req.params.userId) })
+        const user = await db.collection("admin").findOne({ _id: mongodb.ObjectId((req.params.userId)) })
 
         //Close connection
         await connection.close()
@@ -95,7 +95,7 @@ app.put("/user/:userId", async (req, res) => {
 
         //Select collection & DO operation(CRUD)
 
-        const user = await db.collection("admin").updateOne({ _id: mongodb.ObjectId(req.params.userId) }, { $set: {name:req.body.name,email:req.body.email,office:req.body.office,state:req.body.state,dob:req.body.dob,phone:req.body.phone,salary:req.body.salary,gender:req.body.gender} })
+        const user = await db.collection("admin").updateOne({ _id: mongodb.ObjectId(req.params.userId) }, { $set: {name:req.body.name,email:req.body.email,book:req.body.book,isbn:req.body.isbn,dob:req.body.dob,phone:req.body.phone,price:req.body.price,gender:req.body.gender} })
 
         //Close connection
         await connection.close()
